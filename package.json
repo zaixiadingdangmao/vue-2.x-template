@@ -4,10 +4,15 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "serve:test": "vue-cli-service serve --mode test",
+    "serve:prod": "vue-cli-service serve --mode prod",
+    "build": "vue-cli-service build",
+    "build:prod": "vue-cli-service build --mode prod"
   },
   "dependencies": {
+    "axios": "^0.26.1",
     "core-js": "^3.6.5",
+    "nprogress": "^0.2.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"

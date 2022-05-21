@@ -1,27 +1,48 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+/*
+ * @Description: 
+ * @Author: zhangxuelong
+ * @Date: 2022-05-21 15:30:03
+ */
+import Vue from "vue";
+import VueRouter from "vue-router";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
 
-Vue.use(VueRouter)
-
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+import routes from "./router";
+Vue.use(VueRouter);
 
 const router = new VueRouter({
   routes
-})
+});
 
-export default router
+const whitelist = ['viewPage', 'login'];
+// 前置守卫
+router.beforeEach((to, from, next) => {
+  NProgress.start();
+  
+  if (to.name === "login") {
+    removeSession();
+  }
+
+  if (sessionStorage.token || whitelist.includes(to.name)) {
+    next();
+  } else {
+    next("/login");
+    NProgress.done();
+  }
+
+  next();
+});
+
+function removeSession() {
+  ["activeProjectId", "token"].forEach(key => {
+    sessionStorage.removeItem(key);
+  });
+}
+
+// 后置守卫
+router.afterEach((to, from) => {
+  NProgress.done();
+});
+
+export default router;

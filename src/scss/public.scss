@@ -1,0 +1,13 @@
+// 全局class
+.u_overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 溢出省略
+@mixin eps {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

@@ -1,0 +1,563 @@
+// 组件动画效果
+$duration-time: var(--durationTime, 0.3s); // 动画时长
+$delay-time: var(--delayTime, 0s); // 动画延迟时长
+.animated {
+  animation-duration: $duration-time;
+  animation-delay: $delay-time;
+  animation-fill-mode: both;
+  animation-timing-function: linear;
+}
+
+// 进入
+@keyframes u-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+.u-fade-in {
+  animation-name: u-fade-in;
+}
+
+@keyframes u-fade-in-scale {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.u-fade-in-scale {
+  animation-name: u-fade-in-scale;
+}
+
+@keyframes u-fade-in-right {
+  from {
+    opacity: 0;
+    transform: translate(100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+.u-fade-in-right {
+  animation-name: u-fade-in-right;
+}
+
+@keyframes u-fade-in-left {
+  from {
+    opacity: 0;
+    transform: translate(-100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+.u-fade-in-left {
+  animation-name: u-fade-in-left;
+}
+
+@keyframes u-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translate(0, 100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+.u-fade-in-up {
+  animation-name: u-fade-in-up;
+}
+
+@keyframes u-fade-in-down {
+  from {
+    opacity: 0;
+    transform: translate(0, -100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+.u-fade-in-down {
+  animation-name: u-fade-in-down;
+}
+
+@keyframes u-slide-in-right {
+  from {
+    transform: translate(100%, 0);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
+}
+.u-slide-in-right {
+  animation-name: u-slide-in-right;
+}
+
+@keyframes u-slide-in-left {
+  from {
+    transform: translate(-100%, 0);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
+}
+.u-slide-in-left {
+  animation-name: u-slide-in-left;
+}
+
+@keyframes u-slide-in-up {
+  from {
+    transform: translate(0, 100%);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
+}
+.u-slide-in-up {
+  animation-name: u-slide-in-up;
+}
+
+@keyframes u-slide-in-down {
+  from {
+    transform: translate(0, -100%);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
+}
+.u-slide-in-down {
+  animation-name: u-slide-in-down;
+}
+
+@keyframes u-blur-in {
+  from {
+    opacity: 0;
+    filter: blur(40px);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+.u-blur-in {
+  animation-name: u-blur-in;
+}
+
+@keyframes u-scale-in {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+.u-scale-in {
+  animation-name: u-scale-in;
+}
+
+// 退出动画
+@keyframes u-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+.u-fade-out {
+  animation-name: u-fade-out;
+}
+
+@keyframes u-fade-out-scale {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+.u-fade-out-scale {
+  animation-name: u-fade-out-scale;
+}
+
+@keyframes u-fade-out-right {
+  from {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(-100%, 0);
+  }
+}
+.u-fade-out-right {
+  animation-name: u-fade-out-right;
+}
+
+@keyframes u-fade-out-left {
+  from {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(100%, 0);
+  }
+}
+.u-fade-out-left {
+  animation-name: u-fade-out-left;
+}
+
+@keyframes u-fade-out-up {
+  from {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(0, -100%);
+  }
+}
+.u-fade-out-up {
+  animation-name: u-fade-out-up;
+}
+
+@keyframes u-fade-out-down {
+  from {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(0, 100%);
+  }
+}
+.u-fade-out-down {
+  animation-name: u-fade-out-down;
+}
+
+@keyframes u-slide-out-right {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(-100%, 0);
+  }
+}
+.u-slide-out-right {
+  animation-name: u-slide-out-right;
+}
+
+@keyframes u-slide-out-left {
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(100%, 0);
+  }
+}
+.u-slide-out-left {
+  animation-name: u-slide-out-left;
+}
+
+@keyframes u-slide-out-up {
+  from {
+    transform: translate(0, 100%);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
+}
+.u-slide-out-up {
+  animation-name: u-slide-out-up;
+}
+
+@keyframes u-slide-out-down {
+  from {
+    transform: translate(0, -100%);
+  }
+
+  to {
+    transform: translate(0, 0);
+  }
+}
+.u-slide-out-down {
+  animation-name: u-slide-out-down;
+}
+
+@keyframes u-blur-out {
+  from {
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  to {
+    opacity: 0;
+    filter: blur(40px);
+  }
+}
+.u-blur-out {
+  animation-name: u-blur-out;
+}
+
+@keyframes u-scale-out {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(0);
+  }
+}
+.u-scale-out {
+  animation-name: u-scale-out;
+}
+
+.fadeIn-enter-active {
+  @extend .animated;
+  animation-name: u-fade-in;
+}
+.fadeIn-leave-active {
+  @extend .animated;
+  animation-name: u-fade-out;
+}
+.fadeInLeft-enter-active {
+  @extend .animated;
+  animation-name: u-fade-in-left;
+}
+.fadeInLeft-leave-active {
+  @extend .animated;
+  animation-name: u-fade-out-right;
+}
+
+.fadeInRight-enter-active {
+  @extend .animated;
+  animation-name: u-fade-in-right;
+}
+.fadeInRight-leave-active {
+  @extend .animated;
+  animation-name: u-fade-out-left;
+}
+
+.fadeInUp-enter-active {
+  @extend .animated;
+  animation-name: u-fade-in-up;
+}
+.fadeInUp-leave-active {
+  @extend .animated;
+  animation-name: u-fade-out-down;
+}
+
+.fadeInDown-enter-active {
+  @extend .animated;
+  animation-name: u-fade-in-down;
+}
+.fadeInDown-leave-active {
+  @extend .animated;
+  animation-name: u-fade-out-up;
+}
+
+@keyframes select-dropdown-popup-in {
+  from {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+.select-dropdown-popup-in {
+  animation-name: select-dropdown-popup-in;
+}
+
+@keyframes select-dropdown-popup-out {
+  from {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+}
+
+.select-dropdown-popup-out {
+  animation-name: select-dropdown-popup-out;
+}
+
+.u-message-fade-enter,
+.u-message-fade-leave-active {
+  opacity: 0;
+  transform: translate(-50%, -100%);
+}
+
+@keyframes bounce-in-top {
+  0% {
+    transform: translateY(-500px);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  38% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+  55% {
+    transform: translateY(-65px);
+    animation-timing-function: ease-in;
+  }
+  72% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  81% {
+    transform: translateY(-28px);
+    animation-timing-function: ease-in;
+  }
+  90% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  95% {
+    transform: translateY(-8px);
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+}
+
+.bounce-in-top {
+  animation: bounce-in-top 1.1s both;
+}
+
+@keyframes slide-in-fwd-bottom {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out-fwd-bottom {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.slide-in-fwd-bottom-enter-active {
+  transform-origin: bottom center;
+  animation: slide-in-fwd-bottom 0.2s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.slide-in-fwd-bottom-leave-active {
+  transform-origin: bottom center;
+  animation: slide-out-fwd-bottom 0.2s
+    cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+
+@keyframes slit-in-horizontal {
+  0% {
+    transform: translateZ(-800px) rotateX(90deg);
+    opacity: 0;
+  }
+  54% {
+    transform: translateZ(-160px) rotateX(87deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateZ(0) rotateX(0);
+  }
+}
+
+@keyframes slit-out-horizontal {
+  0% {
+    transform: translateZ(0) rotateX(0);
+    opacity: 1;
+  }
+  54% {
+    transform: translateZ(-160px) rotateX(87deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateZ(-800px) rotateX(90deg);
+    opacity: 0;
+  }
+}
+.slit-in-horizontal {
+  animation-name: slit-in-horizontal;
+}
+.slit-horizontal-enter-active {
+  animation: slit-in-horizontal 0.45s ease-in both;
+}
+
+.slit-out-horizontal {
+  animation-name: slit-out-horizontal;
+}
+.slit-horizontal-leave-active {
+  animation: slit-out-horizontal 0.5s ease-in both;
+}
+
+$wordsLoopTime: var(--wordsLoopTimem, 1s);
+.wordsLoop {
+  animation: $wordsLoopTime wordsLoop linear infinite normal;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+// 文字滚动
+@keyframes wordsLoop {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
