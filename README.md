@@ -1,19 +1,7 @@
-# new-vue-template
+## vue 2.x 项目模板
 
-## Project setup
-```
-npm install
-```
+### 运行项目
 
-### Compiles and hot-reloads for development
-```
+```js
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

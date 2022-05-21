@@ -4,7 +4,7 @@
 * @Date: 2022-05-05 14:33:29
 !-->
 <template>
-  <div class='view-page'></div>
+  <div class='view--wrapper'></div>
 </template>
 
 <script>
@@ -23,9 +23,8 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
-.view-page {
+.view--wrapper {
   width: 100%;
   height: 100%;
-  background-color: #000f2d;
 }
 </style>

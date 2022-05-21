@@ -1,9 +1,14 @@
+/*
+ * @Description: 
+ * @Author: zhangxuelong
+ * @Date: 2022-05-21 16:18:13
+ */
 /**
  * 生成 uuid
  *
  * @return {*} uuid
  */
- export function randomId() {
+export function randomId() {
   let s = [];
   let hexDigits = '0123456789abcdef';
 
