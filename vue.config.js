@@ -6,7 +6,7 @@
 module.exports = {
   pages: {
     index: {
-      title: '水乡客厅片区智慧建设平台',
+      title: '项目模板',
       entry: 'src/main.js',
       template: 'public/index.html',
       filename: 'index.html'
