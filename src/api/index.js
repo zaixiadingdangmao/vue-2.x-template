@@ -15,9 +15,7 @@ const get = (url, params) => {
       .then(res => {
         resolve(res.data);
       })
-      .catch(err => {
-        reject(err.data);
-      });
+      .catch(errorHandler);
   });
 };
 
@@ -34,13 +32,14 @@ const post = (url, params) => {
           reject(res.data.result);
         }
       })
-      .catch(err => {
-        if (err) {
-          console.error(url, err);
-          reject(err.data);
-        }
-      });
+      .catch(errorHandler);
   });
+};
+
+// 异常拦截处理器
+const errorHandler = error => {
+  console.error(error);
+  return Promise.reject(error);
 };
 
 export { get, post };
