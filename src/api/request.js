@@ -16,19 +16,50 @@ const request = axios.create({
   withCredentials: false
 });
 
+// 异常拦截处理器
+const errorHandler = error => {
+  return Promise.reject(error);
+};
+
+// 添加请求拦截器
+request.interceptors.request.use(config => {
+  removePending(config);
+  addPending(config);
+  return config;
+}, errorHandler);
+
+// 添加响应拦截器
+request.interceptors.response.use(response => {
+  removePending(response.config);
+  return response;
+}, errorHandler);
+
+const installer = {
+  vm: {},
+  install(Vue) {
+    Vue.use(VueAxios, request);
+  }
+};
+
 /**
  * 生成每个请求唯一的键
  * @param {*} config
  * @returns string
  */
 function getPendingKey(config) {
-  const { url, data } = config;
-  const obj = {};
-  console.log('🚀  -> file: request.js -> line 28 -> date', date);
-  data.forEach((value, key) => {
-    obj[key] = value;
-  });
-  return [url, data];
+  const { url, method, data } = config;
+  let _data;
+  
+  if (data instanceof FormData) {
+    _data = {};
+    data.forEach((value, key) => {
+      _data[key] = value;
+    });
+  } else {
+    _data = '';
+  }
+
+  return [url, method, JSON.stringify(_data)].join('&');
 }
 
 /**
@@ -58,30 +89,5 @@ function removePending(config) {
     pendingMap.delete(pendingKey);
   }
 }
-
-// 异常拦截处理器
-const errorHandler = error => {
-  return Promise.reject(error);
-};
-
-// 添加请求拦截器
-request.interceptors.request.use(config => {
-  removePending(config);
-  addPending(config);
-  return config;
-}, errorHandler);
-
-// 添加响应拦截器
-request.interceptors.response.use(response => {
-  removePending(response.config);
-  return response;
-}, errorHandler);
-
-const installer = {
-  vm: {},
-  install(Vue) {
-    Vue.use(VueAxios, request);
-  }
-};
 
 export { installer as VueAxios, request as axios };

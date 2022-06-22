@@ -38,8 +38,11 @@ const post = (url, params) => {
 
 // 异常拦截处理器
 const errorHandler = error => {
-  console.error(error);
-  return Promise.reject(error);
+  if (error.__CANCEL__) {
+  } else {
+    console.error(error);
+    return Promise.reject(error);
+  }
 };
 
 export { get, post };
