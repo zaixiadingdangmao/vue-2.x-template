@@ -34,13 +34,6 @@ request.interceptors.response.use(response => {
   return response;
 }, errorHandler);
 
-const installer = {
-  vm: {},
-  install(Vue) {
-    Vue.use(VueAxios, request);
-  }
-};
-
 /**
  * 生成每个请求唯一的键
  * @param {*} config
@@ -49,7 +42,7 @@ const installer = {
 function getPendingKey(config) {
   const { url, method, data } = config;
   let _data;
-  
+
   if (data instanceof FormData) {
     _data = {};
     data.forEach((value, key) => {
@@ -90,4 +83,23 @@ function removePending(config) {
   }
 }
 
-export { installer as VueAxios, request as axios };
+/**
+ * 去除所有列表里的请求（用于跳转路由等需要清空请求的情况）
+ */
+function clearPending() {
+  //遍历map对象，用每个取消令牌逐一取消请求，起到清空所有请求的作用
+  for (const [pendingKey, cancelToken] of pendingMap) {
+    cancelToken(pendingKey);
+  }
+  //清空map对象
+  pendingMap.clear();
+}
+
+const installer = {
+  vm: {},
+  install(Vue) {
+    Vue.use(VueAxios, request);
+  }
+};
+
+export { installer as VueAxios, request as axios, clearPending };
